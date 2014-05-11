@@ -18,7 +18,7 @@ start_link() ->
 
 init([], _ConnState) ->
     websocket_client:cast(self(), {text, <<"message 1">>}),
-    register(ws_client, self()),
+    register(ws_client_process, self()),
     {ok, undefined}.
 
 websocket_handle({pong, _}, _ConnState, State) ->
